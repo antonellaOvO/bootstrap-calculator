@@ -47,17 +47,6 @@
           </div>
           <hr />
           <h3 class="my-5" id="resultValue">TOTAL TIPP:</h3>
-          <!-- <div class="mb-3">
-            <label for="exampleResult" class="form-label mt-4"
-              >Result- Total Amount Tipp</label
-            >
-            <input
-              type="text"
-              class="form-control mb-5"
-              id="exampleResult"
-              placeholder=""
-            />
-          </div> -->
           <div class="mb-3 form-check">
             <input
               type="checkbox"
@@ -106,23 +95,26 @@
     </div>
     <script>
       let form = document.querySelector("form");
+      let inputAmount = document.querySelector("input#exampleAmount");
+      let inputTipp = document.querySelector("input#exampleInputTipps");
+      let resultValue = document.querySelector("h3#resultValue");
+      /*let result = (inputAmount.value * inputTipp.value) / 100;
+      let messageBodyModal = document.querySelector("modal-body#modalMessage");
+      messageBodyModal.innerHTML = `Wow ${result}!! That's a BIG Tipp! Soon you will save more to treat yourself 😉`; --- I wanted to introduce the result of the Tipp inside the modal-body (inside the element <p>), but does not work*/
 
+      /*This function submit() is to make the calculation and show the result on the html element*/
       function submit(event) {
         event.preventDefault();
-        let inputAmount = document.querySelector("input#exampleAmount");
-        let inputTipp = document.querySelector("input#exampleInputTipps");
-        let inputResult = document.querySelector("input#exampleResult");
-        let resultValue = document.querySelector("h3#resultValue");
         let result = (inputAmount.value * inputTipp.value) / 100;
         console.log(result);
         resultValue.innerHTML = `TOTAL TIPP: ${result}€`;
       }
-
+      /*This function showModal() is to show the modal*/
       function showModal() {
         var myModal = new bootstrap.Modal(document.getElementById("myModal"));
         myModal.show();
       }
-
+      /*This event is to hide the Modal when click on the close button (inside the Modal)*/
       document.addEventListener("DOMContentLoaded", function () {
         var buttonClose = document.querySelector(".btn-close");
         buttonClose.addEventListener("click", function () {
@@ -133,8 +125,9 @@
           anotherModal.hide();
         });
       });
-
+      /*This event is to make the calculation when click on the submit button*/
       form.addEventListener("submit", submit);
+      /*This event is to show the Modal when click on the submit button*/
       form.addEventListener("submit", showModal);
     </script>
 
