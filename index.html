@@ -30,7 +30,7 @@
           </div>
           <div class="mb-3">
             <label for="exampleInputBillFood" class="form-label"
-              >Total Amount Food</label
+              >Total Amount Food 🥣</label
             >
             <input
               type="text"
@@ -41,7 +41,7 @@
           </div>
           <div class="mb-3">
             <label for="exampleInputBillDrinks" class="form-label"
-              >Total Amount Drinks</label
+              >Total Amount Drinks 🥂</label
             >
             <input
               type="text"
@@ -50,16 +50,6 @@
               placeholder="20"
             />
           </div>
-          <!-- <label for="exampleAmount" class="form-label"
-              >Total Amount Bill</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="exampleAmount"
-              placeholder=""
-              7
-            /> -->
 
           <div class="mb-3">
             <label for="exampleInputTipps" class="form-label">% Tipps</label>
@@ -130,7 +120,7 @@
       let resultValueTipp = document.querySelector("h3#resultValueTipp");
       let resultValueBill = document.querySelector("h3#resultValueBill");
 
-      /*This function submit() is to make the calculation and show the result on the html element "Total Tipp" and also inside the message of the Modal when appears*/
+      /*This function submit() is to make the calculation and show the result on the html element "Total Bill" and the html element "Total Tipp" and this last one result mentioned it will also appear inside the message of the Modal*/
       function submit(event) {
         event.preventDefault();
         let resultBill =
@@ -161,10 +151,10 @@
         });
       });
 
-      /*This event is to make the calculation when click on the "submit" button*/
+      /*This event is to make the calculation (execute the function) when click on the "submit" button*/
       form.addEventListener("submit", submit);
 
-      /*This event is to show the Modal when click on the "submit" button*/
+      /*This event is to show the Modal (execute the function) when click on the "submit" button*/
       form.addEventListener("submit", showModal);
     </script>
 
