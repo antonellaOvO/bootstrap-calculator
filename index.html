@@ -26,16 +26,41 @@
       <div class="col-4">
         <form action="/procesar_formulario" method="post">
           <div class="mb-3">
-            <legend class="mb-5">Calculate your Tipp</legend>
-            <label for="exampleAmount" class="form-label">Total Amount</label>
+            <legend class="mb-5">Calculate Bill and your Tipp</legend>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputBillFood" class="form-label"
+              >Total Amount Food</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputBillFood"
+              placeholder="80"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputBillDrinks" class="form-label"
+              >Total Amount Drinks</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputBillDrinks"
+              placeholder="20"
+            />
+          </div>
+          <!-- <label for="exampleAmount" class="form-label"
+              >Total Amount Bill</label
+            >
             <input
               type="text"
               class="form-control"
               id="exampleAmount"
-              placeholder="540"
+              placeholder=""
               7
-            />
-          </div>
+            /> -->
+
           <div class="mb-3">
             <label for="exampleInputTipps" class="form-label">% Tipps</label>
             <input
@@ -46,7 +71,8 @@
             />
           </div>
           <hr />
-          <h3 class="my-5" id="resultValue">TOTAL TIPP:</h3>
+          <h3 class="my-5" id="resultValueBill">TOTAL BILL:</h3>
+          <h3 class="my-5" id="resultValueTipp">TOTAL TIPP:</h3>
           <div class="mb-3 form-check">
             <input
               type="checkbox"
@@ -94,20 +120,27 @@
       </div>
     </div>
     <script>
+      // let inputAmount = document.querySelector("input#exampleAmount");
       let form = document.querySelector("form");
-      let inputAmount = document.querySelector("input#exampleAmount");
       let inputTipp = document.querySelector("input#exampleInputTipps");
-      let resultValue = document.querySelector("h3#resultValue");
-      let result = (inputAmount.value * inputTipp.value) / 100;
+      let inputBillFood = document.querySelector("input#exampleInputBillFood");
+      let inputBillDrinks = document.querySelector(
+        "input#exampleInputBillDrinks"
+      );
+      let resultValueTipp = document.querySelector("h3#resultValueTipp");
+      let resultValueBill = document.querySelector("h3#resultValueBill");
 
       /*This function submit() is to make the calculation and show the result on the html element "Total Tipp" and also inside the message of the Modal when appears*/
       function submit(event) {
         event.preventDefault();
-        let result = (inputAmount.value * inputTipp.value) / 100;
-        console.log(result);
-        resultValue.innerHTML = `TOTAL TIPP: ${result}€`;
+        let resultBill =
+          parseInt(inputBillFood.value) + parseInt(inputBillDrinks.value);
+        let resultTipp = (resultBill * inputTipp.value) / 100;
+
+        resultValueBill.innerHTML = `TOTAL BILL: ${resultBill}€`;
+        resultValueTipp.innerHTML = `TOTAL TIPP: ${resultTipp}€ 👌`;
         let messageBodyModal = document.getElementById("modalMessage");
-        messageBodyModal.innerHTML = `Wow ${result}€!! That's a BIG Tipp! Soon you will save more to treat yourself 😉`;
+        messageBodyModal.innerHTML = `Wow your Tipp is ${resultTipp}€!! That's a BIG Tipp! Soon you will save more to treat yourself 😉`;
       }
 
       /*This function showModal() is to show the modal*/
