@@ -98,23 +98,25 @@
       let inputAmount = document.querySelector("input#exampleAmount");
       let inputTipp = document.querySelector("input#exampleInputTipps");
       let resultValue = document.querySelector("h3#resultValue");
-      /*let result = (inputAmount.value * inputTipp.value) / 100;
-      let messageBodyModal = document.querySelector("modal-body#modalMessage");
-      messageBodyModal.innerHTML = `Wow ${result}!! That's a BIG Tipp! Soon you will save more to treat yourself 😉`; --- I wanted to introduce the result of the Tipp inside the modal-body (inside the element <p>), but does not work*/
+      let result = (inputAmount.value * inputTipp.value) / 100;
 
-      /*This function submit() is to make the calculation and show the result on the html element*/
+      /*This function submit() is to make the calculation and show the result on the html element "Total Tipp" and also inside the message of the Modal when appears*/
       function submit(event) {
         event.preventDefault();
         let result = (inputAmount.value * inputTipp.value) / 100;
         console.log(result);
         resultValue.innerHTML = `TOTAL TIPP: ${result}€`;
+        let messageBodyModal = document.getElementById("modalMessage");
+        messageBodyModal.innerHTML = `Wow ${result}€!! That's a BIG Tipp! Soon you will save more to treat yourself 😉`;
       }
+
       /*This function showModal() is to show the modal*/
       function showModal() {
         var myModal = new bootstrap.Modal(document.getElementById("myModal"));
         myModal.show();
       }
-      /*This event is to hide the Modal when click on the close button (inside the Modal)*/
+
+      /*This event is to hide the Modal when click on the close "button" (inside the Modal)*/
       document.addEventListener("DOMContentLoaded", function () {
         var buttonClose = document.querySelector(".btn-close");
         buttonClose.addEventListener("click", function () {
@@ -125,9 +127,11 @@
           anotherModal.hide();
         });
       });
-      /*This event is to make the calculation when click on the submit button*/
+
+      /*This event is to make the calculation when click on the "submit" button*/
       form.addEventListener("submit", submit);
-      /*This event is to show the Modal when click on the submit button*/
+
+      /*This event is to show the Modal when click on the "submit" button*/
       form.addEventListener("submit", showModal);
     </script>
 
